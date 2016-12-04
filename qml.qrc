@@ -1,5 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>appComp/FApplicationWindow.qml</file>
+        <file>ui/Scroolbar.qml</file>
+        <file>music/Temp.qml</file>
+        <file>ui/IconButton.qml</file>
+        <file>res/icons/ic_quit.svg</file>
     </qresource>
 </RCC>
