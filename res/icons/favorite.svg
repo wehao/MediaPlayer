@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="48px" height="48px"
+	 viewBox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve">
+<title>ic_favorite_black_24px</title>
+<desc>Created with Sketch.</desc>
+<g id="Page-1" sketch:type="MSPage">
+	<g id="媒体主页--翻页" transform="translate(-618.000000, -434.000000)" sketch:type="MSArtboardGroup">
+		<g id="ic_favorite_black_24px" transform="translate(614.000000, 428.000000)" sketch:type="MSLayerGroup">
+			<g id="Group" sketch:type="MSShapeGroup">
+				<path id="Shape" fill="none" d="M4,6h48v48H4V6z"/>
+				<path id="Shape_1_" d="M28,48.7l-2.9-2.64C14.8,36.72,8,30.56,8,23c0-6.16,4.84-11,11-11c3.48,0,6.82,1.62,9,4.18
+					c2.18-2.56,5.52-4.18,9-4.18c6.16,0,11,4.84,11,11c0,7.56-6.8,13.72-17.1,23.08L28,48.7L28,48.7z"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

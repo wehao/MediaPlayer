@@ -20,7 +20,7 @@ Button {
     Rectangle {
         id: backgoundRec
         anchors.fill: parent
-        color: "red"
+        color: "#aa2116"
     }
     Image {
         id: icon

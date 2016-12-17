@@ -6,5 +6,21 @@
         <file>music/Temp.qml</file>
         <file>ui/IconButton.qml</file>
         <file>res/icons/ic_quit.svg</file>
+        <file>res/icons/cd.svg</file>
+        <file>res/icons/favorite.svg</file>
+        <file>res/icons/history.svg</file>
+        <file>res/icons/ic_music_note.svg</file>
+        <file>res/icons/ic_pause.svg</file>
+        <file>res/icons/ic_play_arrow.svg</file>
+        <file>res/icons/ic_skip_next.svg</file>
+        <file>res/icons/ic_skip_previous.svg</file>
+        <file>res/icons/media_playlist.svg</file>
+        <file>res/icons/repeat.svg</file>
+        <file>res/icons/repeat_one.svg</file>
+        <file>res/icons/shuffle.svg</file>
+        <file>SideBar.qml</file>
+        <file>ui/IconText.qml</file>
+        <file>res/icons/ic_music.svg</file>
+        <file>res/icons/ic_playing_ani.gif</file>
     </qresource>
 </RCC>
