@@ -22,5 +22,8 @@
         <file>ui/IconText.qml</file>
         <file>res/icons/ic_music.svg</file>
         <file>res/icons/ic_playing_ani.gif</file>
+        <file>ui/ItemButton.qml</file>
+        <file>res/icons/temp.jpg</file>
+        <file>FootBar.qml</file>
     </qresource>
 </RCC>

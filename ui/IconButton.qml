@@ -21,6 +21,8 @@ Button {
         id: backgoundRec
         anchors.fill: parent
         color: "#aa2116"
+        border.width: 0
+        border.color: "transparent"
     }
     Image {
         id: icon

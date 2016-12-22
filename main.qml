@@ -80,7 +80,7 @@ Item {
         }
         Rectangle {
             anchors.fill: parent
-            color: "lightblue"
+            color: "#F8F8FF"
         }
         SideBar {
             id: sideBar
@@ -106,6 +106,10 @@ Item {
             id: footerBackgroundRec
             anchors.fill: parent
             color: "lightyellow"
+        }
+        FootBar {
+            width: parent.width
+            height: parent.height
         }
     }
 }

@@ -1,7 +1,7 @@
 import QtQuick 2.4
-import Material 0.2 as Material
+import QtQuick.Controls 1.2
 
-Material.View{
+Item{
     id: iconText
     property alias imageSource: image.source
     property alias text: msgText.text
@@ -13,13 +13,15 @@ Material.View{
             verticalCenter: parent.verticalCenter
             left: parent.left; leftMargin: 10
         }
+        width: 30
+        height: 30
         sourceSize: Qt.size(30, 30)
     }
     Text {
         id: msgText
         anchors {
-            left: image.right; rightMargin: 30
-            verticalCenter: parent.verticalCenter
+            left: image.right; leftMargin: 10
+            verticalCenter: image.verticalCenter
         }
         font.pixelSize: 18
     }
@@ -29,11 +31,10 @@ Material.View{
         width: 30
         height: 30
         anchors {
-            right: parent.right
+            right: parent.right; rightMargin: 5
             verticalCenter: parent.verticalCenter
         }
         source: "qrc:/res/icons/ic_playing_ani.gif"
-        anchors.centerIn: parent
         visible: true
     }
 }
