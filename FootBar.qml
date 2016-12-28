@@ -13,6 +13,7 @@ Item {
             verticalCenter: parent.verticalCenter
             right: playingBtn.left; rightMargin: 40
         }
+        backgroundColor: "red"
         radius: width/2
         iconSource: "qrc:/res/icons/ic_play_arrow.svg"
     }

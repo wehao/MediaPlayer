@@ -37,12 +37,8 @@ Item {
                 height: 50
                 iconSize: 30
                 iconSource: "qrc:/res/icons/ic_quit.svg"
-                onHoveredChanged: {
-                    if(hovered)
-                        iconColor = "white"
-                    else iconColor = "#d3d7d4"
-                }
-                iconColor: "#d3d7d4"
+                //iconColor: hovered?"white":"#d3d7d4"
+                iconColor: "white"
                 colorize: true
                 onClicked: MainApp.close();
             }
