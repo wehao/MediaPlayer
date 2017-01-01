@@ -13,20 +13,28 @@ Item {
             verticalCenter: parent.verticalCenter
             right: playingBtn.left; rightMargin: 40
         }
-        backgroundColor: "red"
-        radius: width/2
-        iconSource: "qrc:/res/icons/ic_play_arrow.svg"
+        //backgroundColor: "red"
+        iconSource: "qrc:/res/icons/ic_skip_previous.svg"
+        iconColor: "white"
+        colorize: true
+        iconRadius: width/2
     }
     IconButton {
         id: playingBtn
-        width: 40
-        height: 40
+        width: 44
+        height: 44
         anchors {
             verticalCenter: parent.verticalCenter
             left: parent.left; leftMargin: 105
         }
         radius: width/2
         iconSource: "qrc:/res/icons/ic_play_arrow.svg"
+        iconColor: "white"
+        colorize: true
+        iconRadius: width/2
+        onItemClicked: {
+            mediaPlayer.play()
+        }
     }
     IconButton {
         id: nextBtn
@@ -36,7 +44,68 @@ Item {
             verticalCenter: parent.verticalCenter
             left: playingBtn.right; leftMargin: 40
         }
-        radius: width/2
-        iconSource: "qrc:/res/icons/ic_play_arrow.svg"
+        iconSource: "qrc:/res/icons/ic_skip_next.svg"
+        iconColor: "white"
+        colorize: true
+        iconRadius: width/2
+        iconSize: 20
+    }
+
+    ProgressBar {
+        id: progressBar
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: nextBtn.right
+        anchors.leftMargin: 40
+        width: 450
+        height: 30
+        color: mainColor
+    }
+
+    VolumeBar {
+        id: volBar
+        anchors.left: progressBar.right
+        anchors.verticalCenter: parent.verticalCenter
+        width: 180
+        height: 30
+        color: mainColor
+    }
+
+    IconButton {
+        id: playModeBtn
+        anchors.left: volBar.right
+        anchors.leftMargin: 5
+        anchors.verticalCenter: parent.verticalCenter
+        width: 30
+        height: 30
+        backgroundColor: "lightyellow"
+        iconColor: "black"
+        colorize: true
+        iconSource: "qrc:/res/icons/repeat.svg"
+    }
+
+    IconButton {
+        id: lyricBtn
+        anchors.left: playModeBtn.right
+        anchors.leftMargin: 12
+        anchors.verticalCenter: parent.verticalCenter
+        width: 30
+        height: 30
+        backgroundColor: "lightyellow"
+        iconColor: "black"
+        colorize: true
+        iconSource: "qrc:/res/icons/repeat.svg"
+    }
+
+    IconButton {
+        id: playListBtn
+        anchors.left: lyricBtn.right
+        anchors.leftMargin: 12
+        anchors.verticalCenter: parent.verticalCenter
+        width: 30
+        height: 30
+        backgroundColor: "lightyellow"
+        iconColor: "black"
+        colorize: true
+        iconSource: "qrc:/res/icons/media_playlist.svg"
     }
 }

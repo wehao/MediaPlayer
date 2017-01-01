@@ -25,5 +25,8 @@
         <file>ui/ItemButton.qml</file>
         <file>res/icons/temp.jpg</file>
         <file>FootBar.qml</file>
+        <file>ui/ProgressBar.qml</file>
+        <file>ui/VolumeBar.qml</file>
+        <file>res/icons/search.png</file>
     </qresource>
 </RCC>

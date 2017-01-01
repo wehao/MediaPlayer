@@ -1,6 +1,7 @@
 import QtQuick 2.5
 import QtQuick.Controls 1.4
 import Qt.labs.controls 1.0
+import Material 0.2 as Material
 import "./music"
 import "./ui"
 
@@ -9,6 +10,7 @@ Item {
     visible: true
     width: 1024
     height: 670
+    property color mainColor: "#aa2116"
     Item {
         id: hearderItem
         width: parent.width
@@ -33,30 +35,89 @@ Item {
             IconButton {
                 id: quitBtn
                 anchors.right: parent.right
-                width: 50
-                height: 50
-                iconSize: 30
+                anchors.rightMargin: 10
+                anchors.verticalCenter: parent.verticalCenter
+                width: 40
+                height: 40
+                iconSize: 40
                 iconSource: "qrc:/res/icons/ic_quit.svg"
-                //iconColor: hovered?"white":"#d3d7d4"
-                iconColor: "white"
+                iconColor: hoverd?"white":"#C7C7C7"
                 colorize: true
-                onClicked: MainApp.close();
+                onItemClicked: MainApp.close();
             }
             IconButton {
                 id: minBtn
                 anchors.right: quitBtn.left
-                width: 50
-                height: 50
-                iconSize: 30
+                anchors.verticalCenter: parent.verticalCenter
+                width: 40
+                height: 40
+                iconSize: 40
                 iconSource: "qrc:/res/icons/ic_quit.svg"
-                onHoveredChanged: {
-                    if(hovered)
-                        iconColor = "white"
-                    else iconColor = "#d3d7d4"
-                }
-                iconColor: "#d3d7d4"
+                iconColor: hoverd?"white":"#C7C7C7"
                 colorize: true
-                onClicked: MainApp.showMinimized()
+                onItemClicked: MainApp.showMinimized()
+            }
+
+            //搜索条
+            Rectangle {
+                width: 300
+                height: 28
+                radius: 14
+
+                anchors.left: parent.left
+                anchors.leftMargin: 300
+                anchors.verticalCenter: parent.verticalCenter
+
+
+                //输入框
+                TextInput {
+                    id:input
+                    anchors.left: parent.left
+                    anchors.leftMargin: 12
+                    anchors.right: searchButton.left
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.pixelSize:15
+                    clip: true
+
+                    //输入改变
+                    onTextChanged:{
+                        if(text === ""){
+                            suggestion.hide();
+                            return;
+                        }
+                       baiduMusic.getSuggestion(text)
+                    }
+
+                    onFocusChanged: {
+                        if(!focus){
+                            suggestion.hide();
+                        }
+                    }
+
+                    //编辑完成，按enter键
+                    onAccepted :{
+                        search();
+                    }
+                }
+
+                //搜索按钮
+                Rectangle {
+                    id:searchButton
+                    height: 20
+                    width: 20
+                    anchors.right: parent.right
+                    anchors.rightMargin: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                    Image {
+                        id: searchIcon
+                        anchors.fill: parent
+                        source: "qrc:/res/icons/search.png"
+                    }
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked:  search()
+                    }
+                }
             }
         }
     }
@@ -85,13 +146,6 @@ Item {
         }
     }
 
-//    Component {
-//        id: temp
-//        Temp {
-//            width: appWindow.width
-//            height: appWindow.height
-//        }
-//    }
 
     Item {
         id: footItem

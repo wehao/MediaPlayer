@@ -135,25 +135,24 @@ Flickable {
                 font.pixelSize: 18
             }
         }
-//        IconButton {
-//            id: favoriteBtn
-//            width: 30
-//            height: 30
-//            anchors {
-//                verticalCenter: parent.verticalCenter
-//                right: parent.right; rightMargin: 10
-//            }
+        IconButton {
+            id: favoriteBtn
+            width: 30
+            height: 30
+            anchors {
+                verticalCenter: parent.verticalCenter
+                right: parent.right; rightMargin: 10
+            }
 
-//            property bool collection: false
-//            iconSource: "qrc:/res/icons/favorite.svg"
-//            backgroundColor: "#F8F8FF"
-//            iconColor: "#FF3030"
-//            opacity: hovered? 0.6:0.3
-//            colorize: collection
-//            onClicked: {
-//                collection = !collection
-//            }
-//        }
+            property bool collection: false
+            iconSource: "qrc:/res/icons/favorite.svg"
+            backgroundColor: "#F8F8FF"
+            iconColor: collection? mainColor : hoverd? "#DEDEDE":"#C7C7C7"
+            colorize: true
+            onItemClicked: {
+                collection = !collection
+            }
+        }
         Rectangle {
             anchors.fill: parent
             border.color: "#D4D4D4"
