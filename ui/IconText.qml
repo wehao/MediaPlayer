@@ -1,11 +1,13 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.2
+import QtGraphicalEffects 1.0
 
 Item{
     id: iconText
     property alias imageSource: image.source
     property alias text: msgText.text
     property alias font: msgText.font
+    property bool colorize: false
 
     Image {
         id: image
@@ -16,7 +18,16 @@ Item{
         width: 30
         height: 30
         sourceSize: Qt.size(30, 30)
+        visible: source != "" && !iconText.colorize
     }
+    ColorOverlay {
+        id: iconOverlay
+        anchors.fill: image
+        source: image
+        color: "black"
+        visible: iconText.colorize
+    }
+
     Text {
         id: msgText
         anchors {

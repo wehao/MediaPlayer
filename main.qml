@@ -122,11 +122,22 @@ Item {
         }
     }
 
-//    StackView {
-//        id: mainStackView
-//        anchors.fill: parent
-//        initialItem:temp
-//    }
+    StackView {
+        id: mainStackView
+        anchors {
+            top: hearderItem.bottom
+            left: listItem.right
+            right: parent.right
+            bottom: footItem.top
+        }
+        property string curSource: ""
+        initialItem: Temp {
+            //anchors.fill: parent
+        }
+        onCurrentItemChanged:  {
+            curSource = currentItem.pageName === undefined? "" : currentItem.pageName
+        }
+    }
 
     Item {
         id: listItem
@@ -145,7 +156,6 @@ Item {
             height: parent.height
         }
     }
-
 
     Item {
         id: footItem

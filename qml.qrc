@@ -28,5 +28,7 @@
         <file>ui/ProgressBar.qml</file>
         <file>ui/VolumeBar.qml</file>
         <file>res/icons/search.png</file>
+        <file>functionPage/LocalMusicPage.qml</file>
+        <file>ui/ThinDivider.qml</file>
     </qresource>
 </RCC>

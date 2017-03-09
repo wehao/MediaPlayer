@@ -44,5 +44,4 @@ Item {
         flickableItem: mainFlickable
         thickness: 10
     }
-
 }

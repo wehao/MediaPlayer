@@ -83,17 +83,29 @@ Item {
         iconSource: "qrc:/res/icons/repeat.svg"
     }
 
-    IconButton {
+//    IconButton {
+//        id: lyricBtn
+//        anchors.left: playModeBtn.right
+//        anchors.leftMargin: 12
+//        anchors.verticalCenter: parent.verticalCenter
+//        width: 30
+//        height: 30
+//        backgroundColor: "lightyellow"
+//        iconColor: "black"
+//        colorize: true
+//        iconSource: "qrc:/res/icons/repeat.svg"
+//    }
+    Text {
         id: lyricBtn
         anchors.left: playModeBtn.right
         anchors.leftMargin: 12
         anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenterOffset: -6
         width: 30
         height: 30
-        backgroundColor: "lightyellow"
-        iconColor: "black"
-        colorize: true
-        iconSource: "qrc:/res/icons/repeat.svg"
+        text: "词"
+        //verticalAlignment: Text.AlignHCenter
+        font.pixelSize: 26
     }
 
     IconButton {

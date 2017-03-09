@@ -1,5 +1,5 @@
 import QtQuick 2.4
-import QtQuick.Controls 1.2
+import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.1
 import "./ui"
 
@@ -25,6 +25,7 @@ Flickable {
         height: 30
         text: "在线音乐"
         imageSource: "qrc:/res/icons/ic_music.svg"
+        colorize: true
     }
     IconText {
         id: localMusic
@@ -33,6 +34,13 @@ Flickable {
         height: 30
         text: "本地音乐"
         imageSource: "qrc:/res/icons/ic_music_note.svg"
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                if(mainStackView.curSource != "qrc:/functionPage/LocalMusicPage.qml")
+                mainStackView.push("qrc:/functionPage/LocalMusicPage.qml", {}, mainStackView.Immediate)
+            }
+        }
     }
 
     Item {
