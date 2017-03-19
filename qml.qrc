@@ -30,5 +30,7 @@
         <file>res/icons/search.png</file>
         <file>functionPage/LocalMusicPage.qml</file>
         <file>ui/ThinDivider.qml</file>
+        <file>ui/FDialog.qml</file>
+        <file>ui/FileDialog.qml</file>
     </qresource>
 </RCC>

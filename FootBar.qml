@@ -4,7 +4,8 @@ import QtQuick.Controls.Styles 1.1
 import "./ui"
 
 Item {
-
+    id: footBarItem
+    property bool playing: mediaPlayer.playState
     IconButton {
         id: previewBtn
         width: 36
@@ -28,7 +29,7 @@ Item {
             left: parent.left; leftMargin: 105
         }
         radius: width/2
-        iconSource: "qrc:/res/icons/ic_play_arrow.svg"
+        iconSource: footBarItem.playing?"qrc:/res/icons/ic_pause.svg":"qrc:/res/icons/ic_play_arrow.svg"
         iconColor: "white"
         colorize: true
         iconRadius: width/2
@@ -68,6 +69,12 @@ Item {
         width: 180
         height: 30
         color: mainColor
+        property int volValue: value
+        value: mediaPlayer.volumn
+        onVolValueChanged: {
+            mediaPlayer.volumn = volValue
+        }
+        //Slider {}
     }
 
     IconButton {

@@ -3,6 +3,7 @@ import Material 0.2 as Material
 
 Item {
     property alias color: slider.color
+    property alias value: slider.value
     Row {
         anchors.fill: parent
         spacing: 10
@@ -22,9 +23,11 @@ Item {
             height: 30
             anchors.verticalCenter: parent.verticalCenter
             anchors.verticalCenterOffset:5
+            minimumValue: 0
+            maximumValue: 100
+            stepSize: 1
             //width:
         }
-
     }
 
 }

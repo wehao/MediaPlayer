@@ -2,16 +2,91 @@ import QtQuick 2.6
 import QtQuick.Controls 1.4
 import QtQml.Models 2.2
 import "../ui"
+import Material 0.2 as Material
+import QtQuick.Dialogs 1.2
 
 Item {
     id: localMusicPage
     property string pageName: "qrc:/functionPage/LocalMusicPage.qml"
-    property int songNum: 0
+    property int songNum: localMusicFunction.localMusicNums
     Rectangle {
         id: backgroundRec
         anchors.fill: parent
         color: "#FCFCFC"
     }
+
+    FileDialog {
+        id: fileDialog
+        title: "选择添加目录——MediaPlayer"
+        folder: shortcuts.home
+        selectFolder: true
+        onAccepted: {
+            console.log("You chose: " + fileDialog.folder)
+            searchPathFunc.addPath(fileDialog.folder, true)
+        }
+        onRejected: {
+            console.log("Canceled")
+        }
+    }
+
+    FDialog {
+        id: choosePathDialog
+        overlayLayer: "dialogOverlay"
+        width: 360
+        height: 400
+        contentMargins: 20
+        titlePixsize: 26
+        title: "选择本地音乐文件夹"
+        positiveButtonText: "添加文件夹"
+        negativeButtonText: "确认"
+        onRejected: {
+            close()
+            localMusicFunction.startSearchMusics();
+            console.log("~~~~" + localMusicFunction.localMusicModel.rowCount())
+        }
+        onAccepted: {
+            fileDialog.open()
+        }
+        ListView {
+            id: pathListView
+            width: choosePathDialog.width
+            height: 242
+            clip: true
+            contentHeight: childrenRect.height
+            spacing: 10
+            x: 20
+            y: 80
+            Component.onCompleted: console.log("height is: " + height)
+            model: searchPathFunc.searchPath
+            //snapMode: ListView.SnapToItem
+            delegate: Item {
+                width: parent.width
+                height: 30
+                Material.CheckBox {
+                    id: checkbox
+                    width: 50
+                    height: 50
+                    anchors {
+                        left: parent.left
+                    }
+                    checked: model.opened
+                    //Component.onCompleted: checked = model.opened
+                    onClicked: {
+                        console.log("checked is " + checked)
+                        searchPathFunc.enablePath(model.path, checked)
+                    }
+                }
+                Text {
+                    id: pathText
+                    anchors.left: checkbox.right
+                    anchors.verticalCenter: checkbox.verticalCenter
+                    text: model.path
+                    verticalAlignment: Text.AlignHCenter
+                }
+            }
+        }
+    }
+
     Item {
         id: titleItem
         height: 30
@@ -48,7 +123,9 @@ Item {
                 verticalAlignment: Text.AlignBottom
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: {}
+                    onClicked: {
+                        choosePathDialog.show()
+                    }
                 }
             }
         }
@@ -156,7 +233,7 @@ Item {
 
     TreeView {
         id: localMusicList
-        model: listModel
+        model: localMusicFunction.localMusicModel
         selectionMode: SelectionMode.SingleSelection
         anchors {
             top: thindivider.bottom
@@ -164,106 +241,53 @@ Item {
             right: parent.right
             bottom: parent.bottom
         }
-        selection: sel
-
-//        itemDelegate: Item {
-//            Rectangle {
-//                anchors.fill: parent
-//                color: "blue"
-////                Text {
-////                    anchors.verticalCenter: parent.verticalCenter
-////                    color: styleData.textColor
-////                    elide: styleData.elideMode
-////                    text: styleData.value
-////                }
-//            }
-//        }
+        width: parent.width
+        onDoubleClicked: {
+            console.log("index is " + index)
+            mediaPlayer.addMedia(localMusicFunction.getIndexPath(index));
+        }
+        //selection: sel
 
         TableViewColumn {
-            title: "Name"
-            role: "name"
+            title: "序号"
+            role: "index"
             resizable: true
+            width: 50
         }
         TableViewColumn {
-            title: "Type"
-            role: "type"
+            title: "音乐标题"
+            role: "musicName"
             resizable: true
+            width: 200
         }
         TableViewColumn {
-            title: "Age"
-            role: "age"
+            title: "歌手"
+            role: "singer"
             resizable: true
+            width: 180
         }
         TableViewColumn {
-            title: "Size"
-            role: "size"
+            title: "时长"
+            role: "musicTime"
             resizable: true
+            width: 90
         }
-
+        TableViewColumn {
+            title: "专辑"
+            role: "album"
+            resizable: true
+            width: 190
+        }
+        TableViewColumn {
+            title: "格式"
+            role: "format"
+            resizable: true
+            width: 42
+        }
     }
 
     ItemSelectionModel {
         id: sel
-        model: listModel
-    }
-
-    ListModel {
-        id: listModel
-        ListElement {
-            name: "Polly"
-            type: "Parrot"
-            age: 12
-            size: "Small"
-        }
-        ListElement {
-            name: "Penny"
-            type: "Turtle"
-            age: 4
-            size: "Small"
-        }
-    //![0]
-        ListElement {
-            name: "Warren"
-            type: "Rabbit"
-            age: 2
-            size: "Small"
-        }
-        ListElement {
-            name: "Spot"
-            type: "Dog"
-            age: 9
-            size: "Medium"
-        }
-        ListElement {
-            name: "Schrödinger"
-            type: "Cat"
-            age: 2
-            size: "Medium"
-        }
-        ListElement {
-            name: "Joey"
-            type: "Kangaroo"
-            age: 1
-            size: "Medium"
-        }
-        ListElement {
-            name: "Kimba"
-            type: "Bunny"
-            age: 65
-            size: "Large"
-        }
-        ListElement {
-            name: "Rover"
-            type: "Dog"
-            age: 5
-            size: "Large"
-        }
-        ListElement {
-            name: "Tiny"
-            type: "Elephant"
-            age: 15
-            size: "Large"
-        }
-    //![1]
+        model: localMusicFunction.localMusicModel
     }
 }

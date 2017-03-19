@@ -11,6 +11,7 @@ Item {
     width: 1024
     height: 670
     property color mainColor: "#aa2116"
+
     Item {
         id: hearderItem
         width: parent.width
@@ -171,5 +172,12 @@ Item {
             width: parent.width
             height: parent.height
         }
+    }
+
+    Material.OverlayLayer{
+        id: dialogOverlay
+        anchors.fill: parent
+        objectName: "dialogOverlay"
+        z: 100
     }
 }

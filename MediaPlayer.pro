@@ -1,11 +1,17 @@
 TEMPLATE = app
 
-QT += qml quick widgets multimedia
+QT += qml quick widgets multimedia core
 
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    mediaplayer.cpp
+    mediaplayer.cpp \
+    model/basiclistmodel.cpp \
+    localFunction/localmusicfunction.cpp \
+    model/searchpath.cpp \
+    localFunction/searchpathfunc.cpp \
+    universalfunc.cpp \
+    mediaanilysis.cpp
 
 RESOURCES += qml.qrc
 
@@ -16,4 +22,14 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    mediaplayer.h
+    mediaplayer.h \
+    model/basiclistmodel.h \
+    localFunction/localmusicfunction.h \
+    model/searchpath.h \
+    localFunction/searchpathfunc.h \
+    universalfunc.h \
+    mediaanilysis.h \
+    music.h
+
+QMAKE_CXXFLAGS += -I /usr/local/include/taglib/
+LIBS += -ltag
